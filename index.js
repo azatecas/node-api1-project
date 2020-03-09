@@ -18,6 +18,16 @@ server.get('/api/users', (req, res) => {
     res.status(200).json(users);
 });
 
+//POST request for adding users JSON
+server.post('/api/users', (req, res) => {
+    const newUser = req.body;
+    //validate that the newUser is correct before saving
+
+    newUser.id = shortid.generate();
+    users.push(newUser);
+    res.status(201).json(newUser);
+});
+
 
 //port for computer to liste to
 const PORT = 5000;
